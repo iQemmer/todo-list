@@ -1,0 +1,523 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #8a2be2;
+    --primary-light: #b980ff;
+    --primary-dark: #5e1c9e;
+    --white: #ffffff;
+    --light-bg: #f8f9fa;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(138, 43, 226, 0.2);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: var(--white);
+    direction: rtl;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    height: 90%;
+    margin: 5vh auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--gradient);
+    color: var(--white);
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+header h1 i {
+    margin-left: 0.5rem;
+}
+
+.coins-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coins-container i {
+    color: gold;
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+}
+
+#coins-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.task-input-container {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    transition: box-shadow 0.3s;
+}
+
+.task-input-container:focus-within {
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+#task-input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background-color: transparent;
+}
+
+#add-task-btn {
+    width: 45px;
+    height: 45px;
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    border-radius: 50%;
+}
+
+#add-task-btn:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    transform: rotate(90deg);
+}
+
+#add-task-btn:active {
+    transform: scale(0.95) rotate(90deg);
+}
+
+.tasks-container {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    overflow: hidden;
+}
+
+h2 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+h2 i {
+    margin-left: 0.5rem;
+    color: var(--primary-color);
+}
+
+.tasks-list-wrapper {
+    overflow-y: auto;
+    flex: 1;
+}
+
+#tasks-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.task-text {
+    flex: 1;
+    font-size: 1.05rem;
+}
+
+.task-actions {
+    display: flex;
+}
+
+.task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.task-actions button:hover {
+    transform: scale(1.2);
+    color: var(--primary-dark);
+}
+
+.time-cards-container {
+    margin-top: auto;
+    flex: 1;
+    max-height: 180px;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    height: 140px;
+}
+
+.time-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    padding: 0.8rem;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    gap: 0.3rem;
+}
+
+.time-card i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.2rem;
+}
+
+.time-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+    background: linear-gradient(to bottom, var(--white), #f0f0ff);
+}
+
+.time-card.custom {
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+    padding: 0.6rem;
+}
+
+.time-card .time {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.time-card .coins {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+#custom-minutes {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+#custom-minutes:focus {
+    border-color: var(--primary-light);
+}
+
+.custom-time-btn {
+    margin-top: 0.2rem;
+    width: 100%;
+    height: fit-content;
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-self: center;
+    padding: 5px;
+}
+
+.custom-time-btn:active {
+    transform: scale(0.95);
+}
+
+.custom-time-btn i {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--white);
+}
+
+#timer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.timer-content {
+    position: relative;
+    width: 320px;
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#close-timer {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-dark);
+    transition: transform 0.2s;
+}
+
+#close-timer:hover {
+    transform: scale(1.2);
+}
+
+.timer-display {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#timer-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.timer-controls button {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.timer-controls button i {
+    margin-left: 0.5rem;
+}
+
+#pause-timer {
+    background: var(--gradient);
+    color: var(--white);
+    flex: 1;
+    margin-left: 0.5rem;
+}
+
+#pause-timer:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    transform: translateY(-2px);
+}
+
+#cancel-timer {
+    background-color: #f8d7da;
+    color: #721c24;
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+#cancel-timer:hover {
+    background-color: #f5c6cb;
+    transform: translateY(-2px);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--white);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    z-index: 2000;
+    animation: slideDown 0.3s ease-out, fadeOut 0.3s ease-out 3.7s forwards;
+    max-width: 80%;
+}
+
+.notification i {
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+.notification.success {
+    border-right: 4px solid var(--success-color);
+}
+
+.notification.success i {
+    color: var(--success-color);
+}
+
+.notification.error {
+    border-right: 4px solid var(--danger-color);
+}
+
+.notification.error i {
+    color: var(--danger-color);
+}
+
+.notification.warning {
+    border-right: 4px solid var(--warning-color);
+}
+
+.notification.warning i {
+    color: var(--warning-color);
+}
+
+.notification.info {
+    border-right: 4px solid var(--info-color);
+}
+
+.notification.info i {
+    color: var(--info-color);
+}
+
+@keyframes slideDown {
+    from { transform: translate(-50%, -20px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
