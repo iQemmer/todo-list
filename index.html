@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>قائمة المهام</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<script src="scripts.js" defer></script>
+</head>
+
+<body>
+	<div id="notification" class="notification hidden">
+		<i class="fas fa-info-circle"></i>
+		<span id="notification-message"></span>
+	</div>
+
+	<div class="container">
+		<header>
+			<h1><i class="fas fa-tasks"></i> قائمة المهام</h1>
+			<div class="coins-container">
+				<i class="fas fa-coins"></i>
+				<span id="coins-count">0</span>
+				<span class="coins-label">كوينز</span>
+			</div>
+		</header>
+
+		<main>
+			<div class="task-input-container">
+				<input type="text" id="task-input" placeholder="أضف مهمة جديدة...">
+				<button id="add-task-btn"><i class="fas fa-plus"></i></button>
+			</div>
+
+			<div class="tasks-container">
+				<h2><i class="fas fa-list"></i> المهام</h2>
+				<div class="tasks-list-wrapper">
+					<ul id="tasks-list"></ul>
+				</div>
+			</div>
+
+			<div class="time-cards-container">
+				<h2><i class="fas fa-gift"></i> شراء مكافأة</h2>
+				<div class="cards-wrapper">
+					<div class="time-card" data-minutes="5" data-coins="5">
+						<i class="fas fa-stopwatch"></i>
+						<span class="time">5 دقائق</span>
+						<span class="coins">5 كوينز</span>
+					</div>
+					<div class="time-card" data-minutes="10" data-coins="10">
+						<i class="fas fa-stopwatch"></i>
+						<span class="time">10 دقائق</span>
+						<span class="coins">10 كوينز</span>
+					</div>
+					<div class="time-card" data-minutes="30" data-coins="30">
+						<i class="fas fa-stopwatch"></i>
+						<span class="time">30 دقيقة</span>
+						<span class="coins">30 كوينز</span>
+					</div>
+					<div class="time-card" data-minutes="60" data-coins="60">
+						<i class="fas fa-hourglass-half"></i>
+						<span class="time">ساعة</span>
+						<span class="coins">60 كوينز</span>
+					</div>
+					<div class="time-card custom">
+						<input type="number" id="custom-minutes" placeholder="دقائق" min="1">
+						<span class="coins" id="custom-coins">0 كوينز</span>
+						<button id="start-custom-timer" class="custom-time-btn"><i class="fas fa-play"></i></button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div id="timer-modal" class="hidden">
+		<div class="timer-content">
+			<button id="close-timer"><i class="fas fa-times"></i></button>
+			<div class="timer-display">
+				<i class="fas fa-hourglass-half timer-icon"></i>
+				<span id="timer-value">00:00</span>
+			</div>
+			<div class="timer-controls">
+				<button id="pause-timer"><i class="fas fa-pause"></i> إيقاف مؤقت</button>
+				<button id="cancel-timer"><i class="fas fa-stop"></i> إلغاء</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
